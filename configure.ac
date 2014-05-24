@@ -1,11 +1,11 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.69])
+AC_PREREQ([2.13])
 AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
 AC_CONFIG_SRCDIR([src/SynchronousTCPServer/SynchronousTCPServer.cpp])
 AC_CONFIG_HEADERS([config.h])
-AC_INIT_AUTOMAKE([foreign -Wall -Werror])
+AM_INIT_AUTOMAKE([foreign -Wall -Werror])
 
 # Checks for programs.
 AC_PROG_CXX
@@ -16,13 +16,14 @@ AC_PROG_CC
 # Checks for header files.
 
 # Checks for typedefs, structures, and compiler characteristics.
-AC_CHECK_HEADER_STDBOOL
-XXFLAGS="${CXXFLAGS} -Wall -std=c++11"
+#AC_CHECK_HEADER_STDBOOL
+CXXFLAGS="${CXXFLAGS} -Wall -std=gnu++0x"
 AC_TYPE_SIZE_T
 
 # Checks for library functions.
 AC_CHECK_FUNCS([memset socket])
 
-AC_CONFIG_FILES([src/Makefile
-                 src/SynchronousTCPServer/Makefile])
+AC_CONFIG_FILES([Makefile
+				src/Makefile
+                src/SynchronousTCPServer/Makefile])
 AC_OUTPUT
